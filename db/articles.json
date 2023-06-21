@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Sample Article",
+    "subject": "Technology",
+    "message": "This is a sample article about technology."
+  },
+  {
+    "name": "Mike Kwak",
+    "subject": "World",
+    "message": "this is test."
+  },
+  {
+    "name": "Bruce Lee",
+    "subject": "Self Development",
+    "message": "test2"
+  }
+]

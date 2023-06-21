@@ -6,7 +6,10 @@
   <body>
     {{> header}}
 
-    <h3>{{ message }}</h3>
+    {{#blogs}}
+    <li>{{ name }} - {{ subject }}</li>
+    <li>{{ message }}</li>
+    {{/blogs}}
 
     <hr />
 
