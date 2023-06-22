@@ -3,11 +3,12 @@ body {
 }
 
 .header {
-  background: black url(images/star.jpg) center/cover;
-}
-.header .title,
-.header a {
-  color: aliceblue;
+  background: black url(images/star.jpg) center / cover;
+
+  .title,
+  a {
+    color: aliceblue;
+  }
 }
 
 .wrap {
@@ -29,4 +30,4 @@ body {
 
 .fill-height {
   height: 270px;
-}/*# sourceMappingURL=style.css.map */
+}

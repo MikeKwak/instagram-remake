@@ -5,12 +5,26 @@
   </head>
   <body>
     {{> header}}
-
-    {{#blogs}}
-    <li>{{ name }} - {{ subject }}</li>
-    <li>{{ message }}</li>
-    {{/blogs}}
-
+    <div class="wrap">
+      <div class="container is-fluid">
+        <div class="columns flex-wrap">
+          {{#blogs}}
+          <div class="column flex-column-fix-size">
+            <div class="card fill-height">
+              <header class="card-header">
+                <p class="card-header-title">{{ name }}</p>
+              </header>
+              <div class="content">{{ message }}</div>
+              <footer class="card-footer">
+                <a href="#" class="card-footer-item">{{ subject }}</a>
+                <a href="#" class="card-footer-item">{{ name }}</a>
+              </footer>
+            </div>
+          </div>
+          {{/blogs}}
+        </div>
+      </div>
+    </div>
     <hr />
 
     {{> footer}}
