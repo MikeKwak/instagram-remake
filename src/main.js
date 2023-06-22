@@ -3,12 +3,13 @@ import "express-async-errors";
 import mustacheExpress from "mustache-express";
 import path from "node:path";
 import fs from "fs";
+import { fileURLToPath } from "node:url";
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 // serve static files
-app.use(express.static("public"));
+app.use("/public", express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 // Mustache 템플릿 설정
