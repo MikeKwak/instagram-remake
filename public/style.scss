@@ -6,9 +6,25 @@ body {
   background: black url(images/star.jpg) center / cover;
 
   .title,
+  .author,
   a {
     color: aliceblue;
   }
+
+  .container {
+    height: 130px;
+
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .container.hide {
+    opacity: 0;
+  }
+}
+
+.quote {
+  transition: opacity 3s ease-in;
 }
 
 .wrap {
@@ -26,8 +42,56 @@ body {
   height: 300px;
   flex-grow: 0;
   flex-basis: 25%;
+
+  .fill-height {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+
+    .card-header {
+      flex-grow: 0;
+    }
+
+    .content {
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      flex-grow: 0;
+    }
+  }
 }
 
-.fill-height {
-  height: 270px;
+.blogs-container{
+  flex-direction: column;
+
+  .blog{
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    padding: 30px;
+    margin-bottom: 30px;
+    
+    border: 1px solid #000;
+    border-radius: 5px;
+  
+    .blog-name{
+      text-align: center;
+      padding-bottom: 30px;
+      border-bottom: solid #000;
+    }
+
+    .blog-content{
+      padding: 15px;
+    }
+
+    .blog-footer{
+      position: absolute;
+      width: 100%;
+      padding: 15px;
+      bottom: 3px;
+    }
+  }
 }

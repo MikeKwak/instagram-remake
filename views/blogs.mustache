@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> meta}}
+  </head>
+  <body>
+    {{> header}}
+
+        <section class="wrap">
+            <div class="blogs-container">
+                {{#blogs}}
+                <div class="blog">
+                  <div class="image">
+                    <img src="{{ image }}" alt="img">
+                    
+                  </div>
+                  <h1 class="blog-name">
+                    {{ title }}
+                  </h1>
+
+                  <p class="content">
+                    {{ contents }}
+                  </p>
+
+                  <div class="blog-footer">
+                    {{ subject }} [ {{ created }} ]
+                  </div>
+
+                </div>
+                {{/blogs}}
+            </div>
+        </section>
+    
+
+    {{> footer}}
+  </body>
+</html>

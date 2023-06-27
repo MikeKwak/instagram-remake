@@ -6,8 +6,21 @@ body {
   background: black url(images/star.jpg) center/cover;
 }
 .header .title,
+.header .author,
 .header a {
   color: aliceblue;
+}
+.header .container {
+  height: 130px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.header .container.hide {
+  opacity: 0;
+}
+
+.quote {
+  transition: opacity 3s ease-in;
 }
 
 .wrap {
@@ -26,7 +39,44 @@ body {
   flex-grow: 0;
   flex-basis: 25%;
 }
-
-.fill-height {
+.flex-column-fix-size .fill-height {
+  display: flex;
+  flex-direction: column;
   height: 270px;
+}
+.flex-column-fix-size .fill-height .card-header {
+  flex-grow: 0;
+}
+.flex-column-fix-size .fill-height .content {
+  flex-grow: 1;
+}
+.flex-column-fix-size .fill-height .card-footer {
+  flex-grow: 0;
+}
+
+.blogs-container {
+  flex-direction: column;
+}
+.blogs-container .blog {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.blogs-container .blog .blog-name {
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: solid #000;
+}
+.blogs-container .blog .blog-content {
+  padding: 15px;
+}
+.blogs-container .blog .blog-footer {
+  position: absolute;
+  width: 100%;
+  padding: 15px;
+  bottom: 3px;
 }/*# sourceMappingURL=style.css.map */

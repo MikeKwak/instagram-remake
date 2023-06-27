@@ -5,17 +5,28 @@
   </head>
   <body>
     {{> header}}
-    <div class="box">
-      <form action="/form" method="post">
+    <div class="box wrap">
+      <form action="/form" method="post" enctype="multipart/form-data">
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label">Image</label>
+          <div class="control">
+            <input 
+              type="file" 
+              name="image" 
+              class="input" 
+              accept="image/*" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Post Title</label>
           <div class="control">
             <input
-              id="nameInput"
-              name="name"
+              id="titleInput"
+              name="title"
               class="input"
               type="text"
-              placeholder="Text input" />
+              placeholder="title of the post" />
           </div>
         </div>
 
@@ -24,24 +35,24 @@
           <div class="control">
             <div class="select">
               <select id="subjectInput" name="subject">
-                <option>Select dropdown</option>
-                <option>Science</option>
                 <option>Self Development</option>
-                <option>World</option>
+                <option>Technology</option>
                 <option>Programming</option>
+                <option>Business</option>
+                <option>Philosophy</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Message</label>
+          <label class="label">Text</label>
           <div class="control">
             <textarea
-              id="messageInput"
-              name="message"
+              id="textInput"
+              name="text"
               class="textarea"
-              placeholder="Textarea"></textarea>
+              placeholder="Give your input to the world"></textarea>
           </div>
         </div>
 

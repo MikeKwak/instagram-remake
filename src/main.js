@@ -1,15 +1,31 @@
 import express from "express";
 import "express-async-errors";
 import mustacheExpress from "mustache-express";
-import path from "node:path";
-import fs from "fs";
-import { fileURLToPath } from "node:url";
+import path from "path";
+import multer from 'multer';
+
+import { getBlogs, getBlog, createBlog } from './database.js'
 
 const port = process.env.PORT || 3000;
 const app = express();
 
+var storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, "uploads/images/");
+  },
+  filename: function(req, file, cb){
+    const ext = path.extname(file.originalname)
+    cb(null, path.basename(file.originalname, ext) + "-" + Date.now() + ext)
+  }
+})
+
+var upload = multer({ storage: storage });
+
 // serve static files
 app.use("/public", express.static("public"));
+app.use("/uploads", express.static("uploads"));
+
+//for post method 
 app.use(express.urlencoded({ extended: true }));
 
 // Mustache 템플릿 설정
@@ -19,35 +35,29 @@ app.set("views", path.resolve() + "/views"); //views: Specifies the directory wh
 
 // 라우팅
 app.get("/", (req, res) => {
-  const data = fs.readFileSync("db/articles.json", "utf8");
-  const articles = JSON.parse(data);
-  res.render("home", { blogs: articles });
+
+});
+
+app.get("/blogs", async (req, res) => {
+  const blogs = await getBlogs()
+  res.render("blogs", { blogs: blogs })
 });
 
 app.get("/form", (req, res) => {
   res.render("form");
 });
 
-app.post("/form", (req, res) => {
-  // Read the existing articles data from the JSON file
-  const data = fs.readFileSync("db/articles.json", "utf8");
-  const articles = JSON.parse(data);
+app.post("/form", upload.single('image'), async (req, res) => {
+  const imagePath = `./uploads/images/${req.file.filename}`;
 
-  // Create a new article object from the req.body
-  const newArticle = {
-    name: req.body.name,
+  const newPost = {
+    title: req.body.title,
     subject: req.body.subject,
-    message: req.body.message,
+    text: req.body.text,
   };
 
-  // Add the new article to the existing articles array
-  articles.push(newArticle);
-
-  // // Write the updated articles data back to the JSON file
-  fs.writeFileSync("db/articles.json", JSON.stringify(articles, null, 2));
-
-  // Send a response indicating successful upload
-  res.send("Article submitted successfully!");
+  await createBlog(imagePath, newPost.title, newPost.subject, newPost.text)
+  res.send("success")
 });
 
 // 에러 응답
