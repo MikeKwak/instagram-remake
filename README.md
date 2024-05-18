@@ -1,10 +1,12 @@
-# express-sample-server
+# Express Sample Blog Server
 
-## 개발
+## Overview
 
-1. 소스 체크아웃
-1. `npm install`
-1. `npm run dev`
-1. http://localhost:3000 접속
+This is a sample blog website built with Express.js and Mustache. The server provides basic functionalities for creating, reading, updating, and deleting blog posts. It serves dynamic web pages using Mustache as the templating engine.
 
-> `src`, `views` 소스를 수정하면 서버가 자동으로 재시작됨
+## Features
+
+- Create, read, update, and delete blog posts.
+- Dynamic HTML rendering with Mustache templates.
+- Auto-restart the server on source code changes.
+
